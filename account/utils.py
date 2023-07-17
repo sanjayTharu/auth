@@ -17,3 +17,18 @@ def send_activation_email(recipient_email,activation_url):
     email= EmailMultiAlternatives(subject,text_content,from_email,to)
     email.attach_alternative(html_content,"text/html")
     email.send()
+
+def send_reset_password_email(recipient_email,reset_url):
+    subject= 'Reset Your password on '+settings.SITE_NAME
+    from_email=settings.EMAIL_HOST_USER
+    to= [recipient_email]
+
+    #load the html template
+    html_content=render_to_string('account/reset_password_email.html',{'reset_url':reset_url})
+
+    #create the email body with both HTML and plain text version
+
+    text_content = strip_tags(html_content)
+    email= EmailMultiAlternatives(subject,text_content,from_email,to)
+    email.attach_alternative(html_content,"text/html")
+    email.send()

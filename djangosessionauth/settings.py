@@ -125,7 +125,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -172,3 +172,6 @@ REST_FRAMEWORK = {
     #Disable Browsable API and Render JSON
     'DEFAULT_RENDERER_CLASSES':('rest_framework.renderers.JSONrenderer',),
 }
+
+#Session id Expire Default is 1209600 s = 14 days
+SESSION_COOKIE_AGE=1800 #30 min
